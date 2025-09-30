@@ -1,0 +1,135 @@
+/* locks background so you cant scroll (like a real homescreen lol) */
+html, body { height: 100%; margin: 0; overflow: hidden; }
+body {
+  background: url('images/windowxp.jpg') center/cover no-repeat fixed;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* desktop icons on the left */
+.desktop-icons {
+  position: absolute;
+  top: 20px; 
+  left: 20px;
+  display: flex; 
+  flex-direction: 
+  column; 
+  gap: 38px;
+}
+.folder-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer; color: #fff; text-decoration: none;
+}
+.folder-btn img { width: 74px; height: auto; display: block; }
+.folder-btn .label {
+  font-size: 14px; text-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
+
+/* corner icons (top-right Fun, bottom-right Recycle Bin) */
+.corner-icon{
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer; color: #fff;
+  text-decoration: none; z-index: 10;
+}
+.corner-icon img { width: 74px; height: auto; display: block; }
+.corner-icon .label { font-size: 14px; text-shadow: 0 2px 6px rgba(0,0,0,.6); }
+
+/* positions */
+.corner-icon.fun { right: 20px; top: 20px; }
+.corner-icon.recycle { right: 20px; bottom: 16px; }
+
+
+/* positioning of the windows */
+.window-a { left: 220px; bottom: 40px; }
+.window-b { right: 120px; top: 60px; }
+
+/* windows bar on top of the windows */
+.window-titlebar {
+  height: 36px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6px;
+  background: #f6fbff;
+  border-bottom: 1px solid #aaacae;
+  color: #0b0b0b;
+}
+.tab { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.35);
+  border-radius: 10px; padding: 4px 10px; }
+.tab-icon { font-size: 14px; }
+.tab-text { font-size: 14px; }
+
+.window-controls { display: flex; }
+.control-btn {
+  width: 40px; height: 36px; border: none; background: transparent; cursor: pointer;
+  font-size: 16px;
+}
+.control-btn:hover { background: rgba(0,0,0,.08); }
+.control-btn.close:hover { background: #e81123; color: #fff; }
+
+/* makes all the windows the same size */
+/* this way, photos do not impact the window size */
+:root {
+  --win-w: 520px;
+  --win-h: 410px;  
+  --titlebar-h: 36px;
+}
+
+.window {
+  position: absolute;
+  width: var(--win-w);
+  height: var(--win-h);
+  background: #fff;
+  border: 1px solid #5b6b79;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* makes sure the content fits the window */
+.window-content {
+  height: calc(var(--win-h) - var(--titlebar-h));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+}
+
+/* make images scale nicely :-) */
+.window-content img,
+.window-content .fit,
+
+
+/* name of the window */
+.name-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  padding: 10px;
+  gap: 0;
+}
+
+.name-part {
+  width: auto;  
+  max-width: 100%;     
+  height: auto;
+  display: block;
+}
+
+/* makes my gifs fit in the window */
+.window-b .window-content { overflow: hidden; }
+
+.window-b .name-part {
+  max-width: none; 
+  width: 150%;    
+  padding-right: 300px; 
+  height: auto;
+}
+/* makes the kitty fit in the window better */
+.window-a .window-content img {
+  max-width: 125%; 
+  max-height: 110%; 
+  width: auto;
+  height: auto;
+  object-fit: fill;
+}
